@@ -10,7 +10,7 @@ app = FastAPI(title="Lead Qualification Dashboard API", version="1.0.0")
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],
+    allow_origins=["http://localhost:3000",https://lead-dashboard-3jqn.onrender.com],
     # allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],

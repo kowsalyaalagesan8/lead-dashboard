@@ -13,6 +13,7 @@ app.add_middleware(
     allow_origins=[
     "http://localhost:3000",
     "https://lead-dashboard-3jqn.onrender.com",
+    "https://web-leads.onrender.com",
 ],
     # allow_origins=["*"],
     allow_credentials=True,

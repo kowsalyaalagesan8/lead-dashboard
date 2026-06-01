@@ -8,7 +8,9 @@ WHATSAPP_TOKEN        = os.getenv("WHATSAPP_TOKEN")
 PHONE_NUMBER_ID       = os.getenv("WHATSAPP_PHONE_NUMBER_ID")
 VERIFY_TOKEN          = os.getenv("WHATSAPP_VERIFY_TOKEN", "my_verify_token")
 BASE_URL              = f"https://graph.facebook.com/v18.0/{PHONE_NUMBER_ID}"
-
+print("🔑 WhatsApp Token Loaded:", WHATSAPP_TOKEN) 
+print("🔑 WhatsApp Phone Number ID Loaded:", PHONE_NUMBER_ID) 
+print("🔑 WhatsApp Verify Token Loaded:", VERIFY_TOKEN) 
 
 # ─── Send Text Message ────────────────────────────────────────────────────────
 

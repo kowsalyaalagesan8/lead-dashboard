@@ -125,9 +125,11 @@ def parse_whatsapp_webhook(payload: dict) -> dict | None:
 
 
 # ─── Verify Webhook ───────────────────────────────────────────────────────────
-
 def verify_webhook(mode: str, token: str, challenge: str) -> str | None:
+    print("🔍 Verifying Webhook - Mode:", mode, "Token:", token, "Challenge:", challenge)
     """Return challenge string if token matches, else None."""
     if mode == "subscribe" and token == VERIFY_TOKEN:
+        print("✅ Webhook verified successfully!")
         return challenge
+    print("❌ Webhook verification failed.")
     return None

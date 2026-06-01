@@ -22,6 +22,8 @@ async def whatsapp_verify(
     hub_token: str     = Query(None, alias="hub.verify_token"),
     hub_challenge: str = Query(None, alias="hub.challenge")
 ):
+    print("🔍 Verifying WhatsApp Webhook:", hub_mode, hub_token, hub_challenge)
+
     result = verify_webhook(hub_mode, hub_token, hub_challenge)
     if result:
         return PlainTextResponse(content=result)

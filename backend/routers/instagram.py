@@ -2,7 +2,7 @@ from fastapi import APIRouter, Request, Query, HTTPException
 from fastapi.responses import PlainTextResponse
 from sqlalchemy import select
 from database.db import get_db, Lead, Message, Appointment
-from services.instagram_service import (
+from services.instagram_services import (
     parse_instagram_webhook, verify_instagram_webhook,
     send_instagram_message, get_instagram_profile
 )

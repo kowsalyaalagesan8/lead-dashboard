@@ -18,41 +18,31 @@ print("===============================")
 
 # ─── Send Instagram DM ────────────────────────────────────────────────────────
 
+
 async def send_instagram_message(recipient_id: str, message: str) -> dict:
-    """Send a DM reply to an Instagram user."""
-
-    print(f"\n[INSTAGRAM SEND]")
-    print(f"Recipient ID: {recipient_id}")
-    print(f"Message: {message}")
-
-    url = f"{BASE_URL}/me/messages"
-
+    
+    # ❌ Current — using /me/messages (wrong for Instagram)
+    # url = f"{BASE_URL}/me/messages"
+    
+    # ✅ Correct — use Page ID directly
+    PAGE_ID = os.getenv("INSTAGRAM_PAGE_ID")
+    url = f"https://graph.facebook.com/v18.0/{PAGE_ID}/messages"
+    
     headers = {
         "Authorization": f"Bearer {INSTAGRAM_TOKEN}",
         "Content-Type": "application/json"
     }
-
     payload = {
         "recipient": {"id": recipient_id},
-        "message": {"text": message}
+        "message":   {"text": message},
+        "messaging_type": "RESPONSE"
     }
-
-    print("Request URL:", url)
-    print("Payload:", payload)
-
     async with httpx.AsyncClient() as client:
         response = await client.post(
-            url,
-            headers=headers,
-            json=payload,
-            timeout=10
+            url, headers=headers, json=payload, timeout=10
         )
-
-        print("Status Code:", response.status_code)
-        print("Response:", response.text)
-
+        print("Instagram Send Response:", response.json())
         return response.json()
-
 
 # ─── Parse Instagram Webhook ──────────────────────────────────────────────────
 

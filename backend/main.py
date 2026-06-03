@@ -29,6 +29,7 @@ app.include_router(messages.router, prefix="/api/messages", tags=["Messages"])
 app.include_router(analytics.router, prefix="/api/analytics", tags=["Analytics"])
 app.include_router(appointments.router, prefix="/api/appointments", tags=["Appointments"])
 app.include_router(campaigns.router, prefix="/api/campaigns", tags=["Campaigns"])
+app.include_router(instagram.router,    prefix="/api/instagram",    tags=["Instagram"])
 
 @app.on_event("startup")
 async def startup():

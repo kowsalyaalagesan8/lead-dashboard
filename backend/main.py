@@ -3,7 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 import uvicorn
 
-from routers import leads, whatsapp, messages, analytics, appointments, campaigns
+from routers import leads, whatsapp, messages, analytics, appointments, campaigns,instagram
 from database.db import init_db
 
 app = FastAPI(title="Lead Qualification Dashboard API", version="1.0.0")

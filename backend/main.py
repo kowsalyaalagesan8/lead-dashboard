@@ -3,7 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 import uvicorn
 
-from routers import leads, whatsapp, messages, analytics, appointments, campaigns,instagram
+from routers import leads, whatsapp, messages, analytics, appointments, campaigns,instagram,facebook_router
 from database.db import init_db
 
 app = FastAPI(title="Lead Qualification Dashboard API", version="1.0.0")
@@ -30,6 +30,7 @@ app.include_router(analytics.router, prefix="/api/analytics", tags=["Analytics"]
 app.include_router(appointments.router, prefix="/api/appointments", tags=["Appointments"])
 app.include_router(campaigns.router, prefix="/api/campaigns", tags=["Campaigns"])
 app.include_router(instagram.router,    prefix="/api/instagram",    tags=["Instagram"])
+app.include_router(facebook_router, prefix="/api/facebook")
 
 @app.on_event("startup")
 async def startup():

@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Request
 from fastapi.responses import PlainTextResponse
-from app.services.facebook_service import (
+from services.facebook_service import (
     send_facebook_message,
     parse_facebook_webhook,
     verify_facebook_webhook

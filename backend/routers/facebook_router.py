@@ -7,7 +7,7 @@ from services.facebook_service import (
 )
 
 router = APIRouter()
-
+print("ggg")
 @router.get("/webhook")
 async def verify(request: Request):
     params = dict(request.query_params)

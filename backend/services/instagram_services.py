@@ -21,25 +21,25 @@ print("===============================")
 
 async def send_instagram_message(recipient_id: str, message: str) -> dict:
     
-    # ❌ Current — using /me/messages (wrong for Instagram)
-    # url = f"{BASE_URL}/me/messages"
-    
-    # ✅ Correct — use Page ID directly
     PAGE_ID = os.getenv("INSTAGRAM_PAGE_ID")
+    PAGE_TOKEN = os.getenv("INSTAGRAM_ACCESS_TOKEN")  # ← add this line
     url = f"https://graph.facebook.com/v18.0/{PAGE_ID}/messages"
     
-    headers = {
-        "Authorization": f"Bearer {INSTAGRAM_TOKEN}",
-        "Content-Type": "application/json"
-    }
+    # ❌ Remove these headers entirely
+    # headers = {
+    #     "Authorization": f"Bearer {INSTAGRAM_TOKEN}",
+    #     "Content-Type": "application/json"
+    # }
+    
     payload = {
         "recipient": {"id": recipient_id},
         "message":   {"text": message},
-        "messaging_type": "RESPONSE"
+        "messaging_type": "RESPONSE",
+        "access_token": PAGE_TOKEN        # ✅ token goes here in body
     }
     async with httpx.AsyncClient() as client:
         response = await client.post(
-            url, headers=headers, json=payload, timeout=10
+            url, json=payload, timeout=10  # ← no headers parameter
         )
         print("Instagram Send Response:", response.json())
         return response.json()
